@@ -4,18 +4,16 @@ export class SearchBar {
 
     private page: Page;
     private searchInput: Locator;
-    private searchButton: Locator;
 
     constructor(page: Page) {
     this.page = page;
     this.searchInput = page.getByRole('combobox', { name: /search the web/i });
-        this.searchButton = page.getByTestId('searchf-form__submit-icon');
     }
 
     async searchFor(query: string): Promise<void> {
     await this.searchInput.fill(query);
-    await this.searchButton.click();
-    await this.page.waitForLoadState('networkidle');
+    await this.searchInput.press('Enter');
+    await this.page.waitForTimeout(3000);
     }
 
     async clearSearch(): Promise<void> {
