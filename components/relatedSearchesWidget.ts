@@ -7,7 +7,7 @@ export class RelatedSearchesWidget {
 
   constructor(page: Page) {
     this.page = page;
-    this.widget = page.getByTestId('sidebar-web-related-queries');
+    this.widget = page.getByTestId('sidebar');
     this.suggestions = page.locator('[data-test-id^="related-queries-link-"]');
   }
 
